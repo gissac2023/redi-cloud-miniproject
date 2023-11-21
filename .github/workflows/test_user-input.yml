@@ -9,6 +9,10 @@ on:
       - test
   workflow_dispatch:
 
+defaults:
+ run:
+  working-directory: ./User_input-main
+
 jobs:
   build:
     runs-on: ubuntu-latest
