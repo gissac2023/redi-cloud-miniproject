@@ -37,7 +37,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: node-app
+          name: user-input
           path: release.zip
 
   deploy:
