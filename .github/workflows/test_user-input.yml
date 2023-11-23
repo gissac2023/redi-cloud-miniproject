@@ -41,7 +41,7 @@ jobs:
           path: path/**/[abc]rtifac?/*
 
       - name: Look for zip
-        run: ls -la *release.zip   
+        run: ls -la **release.zip   
   deploy:
     runs-on: ubuntu-latest
     needs: build
