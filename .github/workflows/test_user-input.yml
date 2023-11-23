@@ -42,6 +42,10 @@ jobs:
 
       - name: Look for zip
         run: ls -la **release.zip   
+      
+      - name: Find location of release.zip
+        run: find . -name 'release.zip' -print
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
