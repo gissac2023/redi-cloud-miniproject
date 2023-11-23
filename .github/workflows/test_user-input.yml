@@ -54,6 +54,8 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - name: Change directory
+        run: cd ./
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
