@@ -54,6 +54,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: node-app
+          path: path/**/[abc]rtifac?/*
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
