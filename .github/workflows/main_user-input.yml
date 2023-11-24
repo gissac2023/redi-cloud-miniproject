@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: ./User_input-main/dist
+          path: ./User_input-main
 
   deploy:
     runs-on: ubuntu-latest
