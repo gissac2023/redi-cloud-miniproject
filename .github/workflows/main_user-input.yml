@@ -11,7 +11,7 @@ on:
 
 defaults:
  run:
-  working-directory: ./User_input-main
+  working-directory: ./User_input-main/dist
 
 jobs:
   build:
@@ -58,4 +58,4 @@ jobs:
           app-name: 'user-input'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D8203E818B574398B6FD2B02C503F1E0 }}
-          package: ./User_input-main
+          package: ./User_input-main/dist
