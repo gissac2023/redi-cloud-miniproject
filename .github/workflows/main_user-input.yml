@@ -65,4 +65,4 @@ jobs:
           app-name: 'user-input'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D8203E818B574398B6FD2B02C503F1E0 }}
-          package: zip -r release.zip . -i ./build/*
+          package: ./build/*
