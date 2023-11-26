@@ -11,7 +11,7 @@ on:
 
 defaults:
  run:
-  working-directory: ./User_input-main/dist
+  working-directory: ./User_input-main
 
 jobs:
   build:
