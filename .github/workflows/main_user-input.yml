@@ -37,7 +37,7 @@ jobs:
         with:
            filename: release.zip
            path: zip -r release.zip . -i ./dist
-           directory: ./User_input-main
+           directory: ./User_input-main/
         
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -66,4 +66,4 @@ jobs:
           app-name: 'user-input'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D8203E818B574398B6FD2B02C503F1E0 }}
-          package: release.zip
+          package: .
