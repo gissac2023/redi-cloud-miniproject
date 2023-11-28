@@ -37,6 +37,7 @@ jobs:
         with:
            filename: release.zip
            path: ./dist
+           directory: User_input-main
         
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
