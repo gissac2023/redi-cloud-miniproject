@@ -11,7 +11,7 @@ on:
 
 defaults:
  run:
-  working-directory: ./User_input-main
+  working-directory: ./User_input-main/
 
 jobs:
   build:
@@ -36,13 +36,15 @@ jobs:
         uses: TheDoctor0/zip-release@0.7.6
         with:
            filename: release.zip
-           path: zip -r release.zip . -i ./build/*
+           path: .
+           directory: ./User_input-main/dist
+      
         
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: release.zip
+          path: "**/release.zip"
 
   deploy:
     runs-on: ubuntu-latest
@@ -56,8 +58,6 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: node-app
-
-
     - name: 'Deploy to Azure Web App'
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
@@ -65,4 +65,4 @@ jobs:
           app-name: 'user-input'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D8203E818B574398B6FD2B02C503F1E0 }}
-          package: release.zip
+          package: "**/release.zip"
