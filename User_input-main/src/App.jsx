@@ -5,7 +5,7 @@ import {
   getUserByEmail,
   getUsers,
   deleteAllUsers,
-} from "./db";
+} from "../db";
 
 const invalidPasswordErrorMsg =
   "Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.";
