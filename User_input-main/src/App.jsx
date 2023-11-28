@@ -15,6 +15,7 @@ const UserChallenge = () => {
     name: "",
     email: "",
     password: "",
+    group: "",
   });
 
   const [users, setUsers] = useState(getUsers());
@@ -23,24 +24,28 @@ const UserChallenge = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrorMsg("");
-    const { name, email, password } = formData;
+    const { name, email, password, group } = formData;
 
     if (!name) setErrorMsg("Name is required");
     if (!email) setErrorMsg("Email is required");
     const userExist = getUserByEmail(email);
     if (userExist) setErrorMsg("User with email exist");
     if (!password) setErrorMsg("Password is required");
+    // Check if group is selected
+    if (!group) setErrorMsg("Please select a group");
+
 
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
     if (!password.match(passwordRegex)) setErrorMsg(invalidPasswordErrorMsg);
     if (errorMsg) return;
-    const newUser = { name, email, password };
+    const newUser = { name, email, password, group };
     addUser(newUser);
     setUsers(getUsers());
-    setFormData({ name: "", email: "", password: "" });
-    // add user to the list of existing ones and update state with new array
+    setFormData({ name: "", email: "", password: "", group: "" });
+    // Add user to the list of existing ones and update state with the new array
   };
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -49,7 +54,7 @@ const UserChallenge = () => {
     <>
       <div>
         <form className="form" onSubmit={handleSubmit}>
-          <h4>Add User</h4>
+          <h2>Cloud Computing Fall 2023 Database</h2>
           <div className="form-row">
             <label htmlFor="name" className="form-label">
               name
@@ -95,6 +100,32 @@ const UserChallenge = () => {
             {formData.password && (
               <p style={{ fontSize: "10px", color: "red" }}>{errorMsg}</p>
             )}
+          </div>
+          {/* radio button */}
+          <div className="form-row">
+            <label className="form-label">Select Group:</label>
+            <div className="form-input">
+              <input
+                type="radio"
+                id="group"
+                name="group"
+                value="1"
+                onChange={handleChange}
+                checked={formData.group === "1"}
+                required
+              />
+              <label htmlFor="group1">Group 1</label>
+              <input
+                type="radio"
+                id="group"
+                name="group"
+                value="2"
+                onChange={handleChange}
+                checked={formData.group === "2"}
+                required
+              />
+              <label htmlFor="group2">Group 2</label>
+            </div>
           </div>
 
           <button type="submit" className="btn btn-block">

@@ -8,15 +8,15 @@
 
 :root {
   /* colors */
- --primary-100: #ffe0f1;
-  --primary-200: #ffbfe3;
-  --primary-300: #ff9ddd;
-  --primary-400: #ff7bd8;
-  --primary-500: #ff59d3;
-  --primary-600: #ff30bf;
-  --primary-700: #cc20a0;
-  --primary-800: #991080;
-  --primary-900: #660060;
+--primary-100: #fbe6d9; /* Lightest shade of #F15A22 */
+--primary-200: #f8cdb3; /* Very light shade of #F15A22 */
+--primary-300: #f4b280; /* Light shade of #F15A22 */
+--primary-400: #f1954d; /* Medium-light shade of #F15A22 */
+--primary-500: #f15a22; /* Base color #F15A22 */
+--primary-600: #cc4f1f; /* Medium-dark shade of #F15A22 */
+--primary-700: #99401a; /* Dark shade of #F15A22 */
+--primary-800: #732f15; /* Darker shade of #F15A22 */
+--primary-900: #4d1f10; /* Darkest shade of #F15A22 */
 
   /* grey */
   --grey-50: #f8fafc;
@@ -92,6 +92,8 @@ h1 {
 
 h2 {
   font-size: 2.441rem;
+    font-weight: 700;
+     font-family: Arial,Helvetica,sans-serif;
 }
 
 h3 {
@@ -99,11 +101,12 @@ h3 {
 }
 
 h4 {
-  font-size: 1.563rem;
+  font-size: 2rem;
+
 }
 
 h5 {
-  font-size: 1.25rem;
+  font-size: 2rem;
 }
 
 small,
@@ -337,4 +340,54 @@ ul {
   transition: var(--transition);
   text-transform: capitalize;
   display: inline-block;
+}
+/* Styling for radio buttons and labels */
+.form-input {
+  display: flex; /* Use flexbox */
+  align-items: center; /* Align items vertically */
+}
+
+/* Styling for radio buttons */
+/* Hide the default radio button */
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #999; /* Border color for unchecked radio button */
+  outline: none;
+  cursor: pointer;
+  margin-right: 5px; /* Adjust spacing between the radio button and label */
+}
+
+/* Style the radio button when checked */
+input[type="radio"]:checked {
+  border-color: #F15A22; /* Border color for checked radio button */
+  background-color: #F15A22; /* Background color for checked radio button */
+}
+
+/* Style the label associated with the radio button */
+label[for="group1"],
+label[for="group2"] {
+  font-size: 16px; /* Adjust label font size */
+  color: #333; /* Label text color */
+  cursor: pointer;
+}
+
+/* Media query for responsiveness */
+@media screen and (max-width: 768px) {
+  /* Adjust layout for smaller screens */
+  .form-input {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+  }
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 992px) {
+  /* Adjust layout for larger screens */
+  .form-input {
+    justify-content: space-around; /* Space items evenly along the main axis */
+  }
 }
