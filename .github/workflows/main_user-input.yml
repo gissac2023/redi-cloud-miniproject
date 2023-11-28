@@ -11,7 +11,7 @@ on:
 
 defaults:
  run:
-  working-directory: ./User_input-main
+  working-directory: ./User_input-main/
 
 jobs:
   build:
@@ -36,7 +36,7 @@ jobs:
         uses: TheDoctor0/zip-release@0.7.6
         with:
            filename: release.zip
-           path: ./User_input-main/dist/*
+           path: ./dist
         
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
