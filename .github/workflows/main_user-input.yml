@@ -36,7 +36,7 @@ jobs:
         uses: TheDoctor0/zip-release@0.7.6
         with:
            filename: release.zip
-           path: zip -r release.zip . -i ./dist
+           path: ./User_input-main/dist
       
         
       - name: Upload artifact for deployment job
