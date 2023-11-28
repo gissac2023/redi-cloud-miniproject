@@ -220,6 +220,7 @@ ul {
 /* extra styles */
 .form .form-label {
   text-align: left;
+  font-weight: bold;
 }
 .form .btn-block {
   margin-top: 0.5rem;
@@ -346,6 +347,11 @@ ul {
   display: flex; /* Use flexbox */
   align-items: center; /* Align items vertically */
 }
+/* Styling for radio buttons and labels */
+.form-input {
+  display: flex; /* Use flexbox */
+  align-items: center; /* Align items vertically */
+}
 
 /* Styling for radio buttons */
 /* Hide the default radio button */
@@ -359,7 +365,7 @@ input[type="radio"] {
   border: 2px solid #999; /* Border color for unchecked radio button */
   outline: none;
   cursor: pointer;
-  margin-right: 5px; /* Adjust spacing between the radio button and label */
+  margin-right: 8px; /* Adjusted spacing between the radio button and label */
 }
 
 /* Style the radio button when checked */
@@ -377,17 +383,67 @@ label[for="group2"] {
 }
 
 /* Media query for responsiveness */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 668px) {
   /* Adjust layout for smaller screens */
   .form-input {
-    flex-direction: column; /* Stack items vertically on smaller screens */
+  justify-content: space-around; /* Stack items vertically on smaller screens */
   }
+  label[for="group1"],
+label[for="group2"] {
+  font-size: 13px; /* Adjust label font size */
+
+}
+
+  input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #999; /* Border color for unchecked radio button */
+ /* Adjusted spacing between the radio button and label */
+}
+
+h1 {
+  font-size: 3.052rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+ 
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+
+}
+
 }
 
 /* Media query for larger screens */
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 667px) {
   /* Adjust layout for larger screens */
   .form-input {
     justify-content: space-around; /* Space items evenly along the main axis */
   }
+
+}
+
+
+.btn_user {
+  
+display: flex;
+justify-content: space-around;
+align-items: center;
+max-width: var(--fixed-width);
+margin: 0 auto;
+}
+
+img{
+ max-width: var(--fixed-width);
 }

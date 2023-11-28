@@ -1,4 +1,5 @@
 import { useState } from "react";
+import myImage from "../redi_banner.png";
 import {
   addUser,
   deleteUserByEmail,
@@ -34,7 +35,6 @@ const UserChallenge = () => {
     // Check if group is selected
     if (!group) setErrorMsg("Please select a group");
 
-
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
     if (!password.match(passwordRegex)) setErrorMsg(invalidPasswordErrorMsg);
@@ -45,7 +45,21 @@ const UserChallenge = () => {
     setFormData({ name: "", email: "", password: "", group: "" });
     // Add user to the list of existing ones and update state with the new array
   };
+  // Add a function to edit user details
+  const editUserByEmail = (email) => {
+    const userToEdit = getUserByEmail(email);
+    if (userToEdit) {
 
+       deleteUserByEmail(email);
+      // Set the form data to the user's details for editing
+      setFormData({
+        name: userToEdit.name,
+        email: userToEdit.email,
+        password: userToEdit.password,
+        group:userToEdit.group
+      });
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -53,8 +67,10 @@ const UserChallenge = () => {
   return (
     <>
       <div>
+        <img src={myImage} alt="Description of the image" />
         <form className="form" onSubmit={handleSubmit}>
           <h2>Cloud Computing Fall 2023 Database</h2>
+
           <div className="form-row">
             <label htmlFor="name" className="form-label">
               name
@@ -114,6 +130,7 @@ const UserChallenge = () => {
                 checked={formData.group === "1"}
                 required
               />
+
               <label htmlFor="group1">Group 1</label>
               <input
                 type="radio"
@@ -138,22 +155,33 @@ const UserChallenge = () => {
         ) : (
           <>
             {users.map((person) => {
-              const { id, name, email } = person;
+              const { id, name, email, group } = person;
               return (
                 <div key={id}>
                   <h4>name: {name}</h4>
-                  <h5>email: {email}</h5>
-
-                  <button
-                    style={{ marginBottom: "2rem" }}
-                    className="btn"
-                    onClick={() => {
-                      deleteUserByEmail(email);
-                      setUsers(getUsers());
-                    }}
-                  >
-                    Remove User
-                  </button>
+                  <h4>email: {email}</h4>
+                  <h4>group: {group}</h4>
+                  <div className=" btn_user">
+                    <button
+                      style={{ marginBottom: "2rem" }}
+                      className="btn"
+                      onClick={() => {
+                        deleteUserByEmail(email);
+                        setUsers(getUsers());
+                      }}
+                    >
+                      Remove User
+                    </button>
+                    <button
+                      style={{ marginBottom: "2rem", marginRight: "1rem" }}
+                      className="btn"
+                      onClick={() => {
+                        editUserByEmail(email); // Call the editUserByEmail function
+                      }}
+                    >
+                      Edit User
+                    </button>
+                  </div>
                 </div>
               );
             })}

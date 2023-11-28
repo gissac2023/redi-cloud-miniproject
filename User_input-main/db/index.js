@@ -30,3 +30,4 @@ export const deleteUserByEmail = (email) => {
   return users;
 };
 export const deleteAllUsers = () => setUsers([]);
+
